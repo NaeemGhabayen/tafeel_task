@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:tafeel_task/data/datasource/remote/dio/logging_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:tafeel_task/utils/app_constants.dart';
 
 class DioClient {
   final String? baseUrl;

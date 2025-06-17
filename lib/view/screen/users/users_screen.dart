@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tafeel_task/provider/user_provider.dart';
 import 'package:tafeel_task/utils/color_resources.dart';
-import 'package:tafeel_task/utils/images.dart' show Images;
 import 'package:tafeel_task/utils/navigation.dart';
 import 'package:tafeel_task/view/screen/user_data/user_data_screen.dart';
 import 'package:tafeel_task/view/widgets/app_bar.dart';

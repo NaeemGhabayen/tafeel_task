@@ -14,8 +14,6 @@ import 'package:tafeel_task/utils/app_constants.dart';
 import 'package:tafeel_task/view/screen/splash/splash_screen.dart';
 import 'package:tafeel_task/view/widgets/network_aware_widget.dart';
 
-import 'di_container.dart';
-
 final context = RouteHelper.routeHelper.navigationKey.currentState!.context;
 final size = MediaQuery.of(context).size;
 
