@@ -65,11 +65,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                 final user = provider.listUserModel![index];
                 return InkWell(
-                  onTap: ()async{
+                  onTap: (){
                      Provider.of<UserProvider>(
                       context,
                       listen: false,
-                    ).getUserDataApi(context: context, idUser: user.id);
+                    ).getUserDataApi(context: context, idUser:user.id);
+                     Provider.of<UserProvider>(
+                       context,
+                       listen: false,
+                     ).setInitialUserData(user);
 
                     AppNavigation.navigateTo(context, UserDataScreen());
                   },

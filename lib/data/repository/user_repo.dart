@@ -19,8 +19,9 @@ class UserRepo {
     }
   }
 
-  Future<ApiResponse> getUserDataApi({idUser,}) async {
+  Future<ApiResponse> getUserDataApi({int?idUser}) async {
     try {
+      print('${AppConstants.userUri}$idUser');
       Response response = await dioClient!.get('${AppConstants.userUri}$idUser');
       return ApiResponse.withSuccess(response);
     } catch (e) {

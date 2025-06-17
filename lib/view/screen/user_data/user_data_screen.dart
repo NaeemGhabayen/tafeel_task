@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http show get;
 import 'package:provider/provider.dart' show Provider;
 import 'package:tafeel_task/provider/user_provider.dart';
 import 'package:tafeel_task/utils/navigation.dart';
 import 'package:tafeel_task/view/widgets/app_bar.dart';
 
 import '../../../utils/color_resources.dart';
+import '../../../utils/images.dart';
 
 class UserDataScreen extends StatefulWidget {
   const UserDataScreen({super.key});
@@ -41,8 +39,11 @@ class _UserDataScreenState extends State<UserDataScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
+                         CircleAvatar(
+                          backgroundImage:  Provider.of<UserProvider>(
+                            context,
+                            listen: false,
+                          ).userDataModel!.avatar==null?AssetImage(Images.logo):NetworkImage(
                             Provider.of<UserProvider>(
                               context,
                               listen: false,
@@ -63,7 +64,7 @@ class _UserDataScreenState extends State<UserDataScreen> {
                           Provider.of<UserProvider>(
                             context,
                             listen: false,
-                          ).userDataModel!.email!,
+                          ).userDataModel!.email??'',
                           style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                         ),
                       ],

@@ -21,17 +21,18 @@ class UserProvider with ChangeNotifier {
 
   List<UserModel>? get listUserModel => _listUserModel;
 
+  void setInitialUserData(userDataModel){
+    _userDataModel = userDataModel;
+    notifyListeners();
+  }
   Future<bool> getUserListApi({context, int? currentPage}) async {
     _isLoading = true;
     notifyListeners();
     ApiResponse apiResponse = await userRepo!.getUserListApi(
       currentPage: currentPage,
     );
-    print(apiResponse.error);
-    print("apiResponse.error");
     if (apiResponse.response != null &&
         apiResponse.response!.statusCode == 200) {
-      print(apiResponse.response!.data['data']);
       for (var item in apiResponse.response!.data['data']) {
         _listUserModel.add(UserModel.fromJson(item));
       }
@@ -46,8 +47,9 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> getUserDataApi({context,  idUser}) async {
+  Future<bool> getUserDataApi({context, int? idUser}) async {
     _isLoading = true;
+    _userDataModel = UserModel();
     notifyListeners();
     ApiResponse apiResponse = await userRepo!.getUserDataApi(idUser: idUser);
     _isLoading = false;
